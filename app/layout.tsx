@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     email: false,
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/icons/icon-32.png",
+    shortcut: "/icons/icon-32.png",
     apple: "/icons/apple-touch-icon.png",
   },
 };
