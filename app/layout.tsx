@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 import type { ReactNode } from "react";
 import "./globals.css";
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   applicationName: "Veil",
   title: {
     default: "Veil — Your skincare, organized",
@@ -27,6 +28,29 @@ export const metadata: Metadata = {
     apple: "/icons/apple-touch-icon.png",
   },
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const incoming = await headers();
+  const host = incoming.get("x-forwarded-host") ?? incoming.get("host") ?? "localhost:3000";
+  const protocol = incoming.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
+  const metadataBase = new URL(`${protocol}://${host}`);
+  return {
+    ...baseMetadata,
+    metadataBase,
+    openGraph: {
+      type: "website",
+      title: "Veil — Your skincare, organized",
+      description: "A private, local-first skincare routine tracker designed for iPhone.",
+      images: [{ url: "/og.png", width: 1536, height: 1024, alt: "Veil skincare routine tracker" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Veil — Your skincare, organized",
+      description: "A private, local-first skincare routine tracker designed for iPhone.",
+      images: ["/og.png"],
+    },
+  };
+}
 
 export const viewport: Viewport = {
   width: "device-width",
