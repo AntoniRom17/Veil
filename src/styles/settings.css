@@ -61,6 +61,11 @@
   display: block;
 }
 
+.appearance-setting > div {
+  display: grid;
+  gap: var(--space-1);
+}
+
 .settings-row small,
 .appearance-setting small {
   margin-top: var(--space-1);

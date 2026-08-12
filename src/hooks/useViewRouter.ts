@@ -24,7 +24,7 @@ export function useViewRouter() {
     if (nextView === "today") url.searchParams.delete("view");
     else url.searchParams.set("view", nextView);
     window.history.pushState({ view: nextView }, "", url);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0 });
     setView(nextView);
   }, []);
 

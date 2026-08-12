@@ -115,6 +115,14 @@
   transform: translateX(-50%);
 }
 
+.screen-loading {
+  display: grid;
+  min-height: 50dvh;
+  place-items: center;
+  color: var(--color-ink-faint);
+  font-size: var(--font-size-sm);
+}
+
 .skip-link:focus {
   transform: translateY(0);
 }
