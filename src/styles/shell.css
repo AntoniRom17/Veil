@@ -1,0 +1,55 @@
+.veil-boot {
+  display: grid;
+  min-height: 100dvh;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-4);
+  padding: calc(var(--safe-top) + var(--space-8))
+    calc(var(--safe-right) + var(--space-6))
+    calc(var(--safe-bottom) + var(--space-8))
+    calc(var(--safe-left) + var(--space-6));
+  background:
+    radial-gradient(circle at 50% 40%, var(--color-surface) 0, transparent 42%),
+    var(--color-canvas);
+}
+
+.veil-boot__mark {
+  position: relative;
+  display: grid;
+  width: 4.5rem;
+  height: 4.5rem;
+  place-items: center;
+  overflow: hidden;
+  border: var(--border-hairline);
+  border-radius: 1.45rem;
+  background: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.veil-boot__mark::before,
+.veil-boot__mark span {
+  position: absolute;
+  width: 2.75rem;
+  height: 4rem;
+  border-radius: 70% 30% 62% 38% / 65% 45% 55% 35%;
+  background: rgb(255 255 255 / 64%);
+  content: "";
+  transform: rotate(31deg) translate(-0.7rem, 0.45rem);
+}
+
+.veil-boot__mark span {
+  background: rgb(255 255 255 / 34%);
+  transform: rotate(-32deg) translate(0.75rem, 0.55rem);
+}
+
+.veil-boot__brand {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.26em;
+}
+
+.veil-boot__status {
+  color: var(--color-ink-soft);
+  font-size: var(--font-size-sm);
+}
