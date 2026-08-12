@@ -2,6 +2,16 @@ import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
 import type { ReactNode } from "react";
 import "./globals.css";
+import "../src/styles/tokens.css";
+import "../src/styles/base.css";
+import "../src/styles/shell.css";
+import "../src/styles/onboarding.css";
+import "../src/styles/components.css";
+import "../src/styles/routines.css";
+import "../src/styles/today.css";
+import "../src/styles/products.css";
+import "../src/styles/progress.css";
+import "../src/styles/settings.css";
 
 const baseMetadata: Metadata = {
   applicationName: "Veil",
