@@ -43,7 +43,7 @@ export class VeilDatabase extends Dexie {
 
     this.version(1).stores({
       products:
-        "id, name, brand, categoryId, categoryName, status, favorite, dateOpened, updatedAt",
+        "id, name, brand, categoryId, categoryName, photoId, status, favorite, dateOpened, updatedAt",
       routines: "id, name, period, favorite, archived, priority, updatedAt",
       routineSteps: "id, routineId, [routineId+order], productId, categoryName",
       routineSchedules: "id, routineId, kind, enabled",

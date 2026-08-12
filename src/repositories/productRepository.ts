@@ -73,7 +73,10 @@ export class ProductRepository {
     const product = await this.require(id);
     await this.db.transaction("rw", this.db.products, this.db.media, async () => {
       await this.db.products.delete(id);
-      if (product.photoId) await this.db.media.delete(product.photoId);
+      if (product.photoId) {
+        const remainingReferences = await this.db.products.where("photoId").equals(product.photoId).count();
+        if (!remainingReferences) await this.db.media.delete(product.photoId);
+      }
     });
   }
 
