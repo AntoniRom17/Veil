@@ -56,6 +56,11 @@
   font-size: var(--font-size-sm);
 }
 
+.appearance-setting strong,
+.appearance-setting small {
+  display: block;
+}
+
 .settings-row small,
 .appearance-setting small {
   margin-top: var(--space-1);

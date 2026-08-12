@@ -416,5 +416,5 @@
 
 @media (max-width: 23rem) {
   .calendar-card { padding: var(--space-3); }
-  .calendar-grid button { min-height: 2.45rem; }
+  .calendar-grid button { min-height: 2.75rem; }
 }
