@@ -35,7 +35,7 @@ export function VeilApp() {
     <div className="app-shell">
       <a className="skip-link" href="#veil-main">Skip to content</a>
       <main id="veil-main" className="app-shell__main" tabIndex={-1}>
-        {view === "today" ? <TodayScreen onOpenRoutines={() => navigate("routines")} /> : null}
+        {view === "today" ? <TodayScreen onOpenRoutines={() => navigate("routines")} onOpenProducts={() => navigate("products")} /> : null}
         {view === "routines" ? <RoutinesScreen /> : null}
         {view === "products" ? <ProductsScreen /> : null}
         {view === "progress" ? <ProgressScreen /> : null}
