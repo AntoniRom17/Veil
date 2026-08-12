@@ -39,7 +39,7 @@ export function VeilApp() {
         {view === "routines" ? <RoutinesScreen /> : null}
         {view === "products" ? <ProductsScreen /> : null}
         {view === "progress" ? <ProgressScreen /> : null}
-        {view === "more" ? <MoreScreen /> : null}
+        {view === "more" ? <MoreScreen onNavigate={navigate} /> : null}
       </main>
       <BottomNavigation activeView={view} onNavigate={navigate} />
     </div>
