@@ -24,11 +24,11 @@
     "dexie-react-hooks": "^4.4.0",
     "jszip": "^3.10.1",
     "lucide-react": "^1.31.0",
-    "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.37.1",
+    "@cloudflare/vite-plugin": "1.52.0",
     "@eslint/js": "9.39.4",
     "@next/eslint-plugin-next": "16.2.6",
     "@tailwindcss/postcss": "4.2.1",
@@ -48,14 +48,14 @@
     "fake-indexeddb": "^6.2.5",
     "globals": "16.4.0",
     "jsdom": "^29.1.1",
-    "react-server-dom-webpack": "19.2.6",
+    "react-server-dom-webpack": "19.2.8",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "typescript-eslint": "8.59.3",
-    "vinext": "1.0.0-beta.2",
-    "vite": "8.0.13",
+    "vinext": "1.0.0-beta.5",
+    "vite": "8.2.1",
     "vitest": "^4.1.10",
-    "wrangler": "4.92.0"
+    "wrangler": "4.122.0"
   },
   "type": "module"
 }
