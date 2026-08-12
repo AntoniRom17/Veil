@@ -1,0 +1,161 @@
+:root {
+  color-scheme: light dark;
+
+  --color-canvas: #f3f1eb;
+  --color-canvas-deep: #ebe8df;
+  --color-surface: #fbfaf7;
+  --color-surface-raised: #ffffff;
+  --color-surface-soft: #efeee8;
+  --color-surface-glass: rgb(251 250 247 / 86%);
+  --color-ink: #22251f;
+  --color-ink-soft: #60665e;
+  --color-ink-faint: #838980;
+  --color-accent: #657963;
+  --color-accent-strong: #4c634c;
+  --color-accent-soft: #dde6d9;
+  --color-accent-ink: #314331;
+  --color-clay: #9b6e5e;
+  --color-clay-soft: #f0dfd8;
+  --color-warning: #9a7040;
+  --color-warning-soft: #f3e6cf;
+  --color-danger: #a05050;
+  --color-danger-soft: #f4dede;
+  --color-success: #547358;
+  --color-success-soft: #deeadf;
+  --color-border: rgb(39 45 37 / 11%);
+  --color-border-strong: rgb(39 45 37 / 19%);
+  --color-overlay: rgb(20 24 20 / 42%);
+  --color-focus: #476c51;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "Helvetica Neue", Arial, sans-serif;
+  --font-display: "New York", "Iowan Old Style", "Palatino Linotype", Palatino,
+    Georgia, serif;
+
+  --font-size-2xs: 0.6875rem;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.375rem;
+  --font-size-2xl: 1.75rem;
+  --font-size-3xl: clamp(2rem, 8vw, 2.65rem);
+  --font-size-hero: clamp(2.75rem, 13vw, 4.5rem);
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 560;
+  --font-weight-semibold: 650;
+  --font-weight-bold: 730;
+
+  --line-height-tight: 1.08;
+  --line-height-snug: 1.25;
+  --line-height-normal: 1.48;
+  --line-height-relaxed: 1.65;
+
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 1.75rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  --radius-xs: 0.5rem;
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.375rem;
+  --radius-xl: 1.75rem;
+  --radius-2xl: 2.25rem;
+  --radius-round: 999px;
+
+  --shadow-xs: 0 1px 2px rgb(26 31 25 / 4%);
+  --shadow-sm: 0 5px 20px rgb(34 39 32 / 6%);
+  --shadow-md: 0 18px 50px rgb(26 31 25 / 12%);
+  --shadow-sheet: 0 -18px 50px rgb(20 24 20 / 18%);
+
+  --border-hairline: 1px solid var(--color-border);
+  --border-strong: 1px solid var(--color-border-strong);
+
+  --duration-fast: 120ms;
+  --duration-base: 220ms;
+  --duration-slow: 360ms;
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.18, 0.89, 0.32, 1.16);
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --content-max: 46rem;
+  --nav-height: 4.25rem;
+}
+
+:root[data-theme="dark"] {
+  --color-canvas: #151814;
+  --color-canvas-deep: #10130f;
+  --color-surface: #1d211c;
+  --color-surface-raised: #252a24;
+  --color-surface-soft: #292e27;
+  --color-surface-glass: rgb(29 33 28 / 88%);
+  --color-ink: #f1f2ec;
+  --color-ink-soft: #b5bbb0;
+  --color-ink-faint: #8f968b;
+  --color-accent: #9eb39b;
+  --color-accent-strong: #bfd0bc;
+  --color-accent-soft: #334331;
+  --color-accent-ink: #dce9d8;
+  --color-clay: #d09b86;
+  --color-clay-soft: #503a32;
+  --color-warning: #d4ae73;
+  --color-warning-soft: #4b3b27;
+  --color-danger: #e19b9b;
+  --color-danger-soft: #503233;
+  --color-success: #a3c2a6;
+  --color-success-soft: #2c432f;
+  --color-border: rgb(238 242 233 / 10%);
+  --color-border-strong: rgb(238 242 233 / 18%);
+  --color-overlay: rgb(2 4 2 / 62%);
+  --color-focus: #b6ceb2;
+  --shadow-sm: 0 7px 24px rgb(0 0 0 / 18%);
+  --shadow-md: 0 22px 55px rgb(0 0 0 / 32%);
+  --shadow-sheet: 0 -18px 50px rgb(0 0 0 / 38%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-canvas: #151814;
+    --color-canvas-deep: #10130f;
+    --color-surface: #1d211c;
+    --color-surface-raised: #252a24;
+    --color-surface-soft: #292e27;
+    --color-surface-glass: rgb(29 33 28 / 88%);
+    --color-ink: #f1f2ec;
+    --color-ink-soft: #b5bbb0;
+    --color-ink-faint: #8f968b;
+    --color-accent: #9eb39b;
+    --color-accent-strong: #bfd0bc;
+    --color-accent-soft: #334331;
+    --color-accent-ink: #dce9d8;
+    --color-clay: #d09b86;
+    --color-clay-soft: #503a32;
+    --color-warning: #d4ae73;
+    --color-warning-soft: #4b3b27;
+    --color-danger: #e19b9b;
+    --color-danger-soft: #503233;
+    --color-success: #a3c2a6;
+    --color-success-soft: #2c432f;
+    --color-border: rgb(238 242 233 / 10%);
+    --color-border-strong: rgb(238 242 233 / 18%);
+    --color-overlay: rgb(2 4 2 / 62%);
+    --color-focus: #b6ceb2;
+    --shadow-sm: 0 7px 24px rgb(0 0 0 / 18%);
+    --shadow-md: 0 22px 55px rgb(0 0 0 / 32%);
+    --shadow-sheet: 0 -18px 50px rgb(0 0 0 / 38%);
+  }
+}
