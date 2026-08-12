@@ -61,7 +61,7 @@ export function Sheet({
 
   return (
     <div className="sheet-layer" role="presentation">
-      <button className="sheet-backdrop" type="button" aria-label="Close" onClick={onClose} />
+      <button className="sheet-backdrop" type="button" aria-label="Close sheet" onClick={onClose} />
       <div
         ref={panelRef}
         className={`sheet sheet--${size}`}

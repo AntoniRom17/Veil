@@ -16,7 +16,7 @@ export function usePwa() {
     const goOffline = () => setOffline(true);
     window.addEventListener("online", goOnline);
     window.addEventListener("offline", goOffline);
-    if ("serviceWorker" in navigator && window.isSecureContext) {
+    if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator && window.isSecureContext) {
       const register = () => navigator.serviceWorker.register("/sw.js").catch(() => undefined);
       if (document.readyState === "complete") void register();
       else window.addEventListener("load", register, { once: true });
