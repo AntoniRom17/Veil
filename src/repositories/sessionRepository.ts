@@ -32,7 +32,7 @@ export class SessionRepository {
     const existing = await this.db.routineSessions
       .where("[localDate+period]")
       .equals([localDate, routine.period])
-      .filter((session) => session.routineId === routine.id && session.status === "in-progress")
+      .filter((session) => session.routineId === routine.id)
       .first();
     if (existing) return this.attachSteps(existing);
 
