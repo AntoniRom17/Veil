@@ -6,6 +6,7 @@ import { afterEach } from "vitest";
 afterEach(() => {
   cleanup();
   localStorage.clear();
+  delete document.documentElement.dataset.theme;
 });
 
 if (!globalThis.crypto.randomUUID) {
