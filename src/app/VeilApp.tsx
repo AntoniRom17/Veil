@@ -10,6 +10,7 @@ import { MoreScreen } from "@/src/features/settings/MoreScreen";
 import { TodayScreen } from "@/src/features/today/TodayScreen";
 import { Onboarding } from "@/src/features/onboarding/Onboarding";
 import { useDatabaseReady } from "@/src/hooks/useDatabaseReady";
+import { usePwa } from "@/src/hooks/usePwa";
 import { useViewRouter } from "@/src/hooks/useViewRouter";
 import { ONBOARDING_STORAGE_KEY } from "@/src/lib/constants";
 
@@ -24,6 +25,7 @@ function hasCompletedOnboarding(): boolean {
 
 export function VeilApp() {
   const database = useDatabaseReady();
+  const { offline } = usePwa();
   const [onboardingComplete, setOnboardingComplete] = useState(hasCompletedOnboarding);
   const { view, navigate } = useViewRouter();
 
@@ -33,6 +35,7 @@ export function VeilApp() {
 
   return (
     <div className="app-shell">
+      {offline ? <div className="offline-banner" role="status">Offline · your local Veil data is still available</div> : null}
       <a className="skip-link" href="#veil-main">Skip to content</a>
       <main id="veil-main" className="app-shell__main" tabIndex={-1}>
         {view === "today" ? <TodayScreen onOpenRoutines={() => navigate("routines")} onOpenProducts={() => navigate("products")} /> : null}

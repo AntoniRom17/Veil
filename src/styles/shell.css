@@ -98,6 +98,23 @@
   transform: translateY(-180%);
 }
 
+.offline-banner {
+  position: fixed;
+  z-index: 60;
+  top: calc(var(--safe-top) + var(--space-2));
+  left: 50%;
+  max-width: calc(100% - var(--space-6));
+  padding: 0.45rem 0.75rem;
+  border: var(--border-hairline);
+  border-radius: var(--radius-round);
+  background: var(--color-ink);
+  color: var(--color-canvas);
+  font-size: var(--font-size-2xs);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-sm);
+  transform: translateX(-50%);
+}
+
 .skip-link:focus {
   transform: translateY(0);
 }
