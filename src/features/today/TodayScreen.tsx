@@ -1,4 +1,4 @@
-import { Check, CheckCircle2, ChevronDown, Circle, Clock3, FileText, Forward, PackageOpen, Plus, RotateCcw, SkipForward, Sparkles } from "lucide-react";
+import { AlertTriangle, Check, CheckCircle2, ChevronDown, Circle, Clock3, FileText, Forward, PackageOpen, Plus, RotateCcw, SkipForward, Sparkles } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { Button } from "@/src/components/common/Button";
@@ -13,6 +13,7 @@ import { NotesRepository } from "@/src/repositories/notesRepository";
 import { RoutineRepository } from "@/src/repositories/routineRepository";
 import { SessionRepository } from "@/src/repositories/sessionRepository";
 import { selectTodayRoutine } from "@/src/services/schedulingService";
+import { findIncompatibilityWarnings } from "@/src/services/incompatibilityService";
 import type { RoutineWithDetails, SessionStepState } from "@/src/types/domain";
 import { createDefaultPreferences } from "@/src/lib/constants";
 import { formatCalendarDate, formatClockTime, resolveRoutinePeriod, toLocalDateKey } from "@/src/utils/dates";
@@ -29,6 +30,8 @@ export function TodayScreen({ onOpenRoutines, onOpenProducts }: TodayScreenProps
   const sessionRepository = useMemo(() => new SessionRepository(db), [db]);
   const notesRepository = useMemo(() => new NotesRepository(db), [db]);
   const routines = useLiveQuery(() => routineRepository.list(), [routineRepository], []);
+  const products = useLiveQuery(() => db.products.toArray(), [db], []);
+  const incompatibilities = useLiveQuery(() => db.incompatibilities.toArray(), [db], []);
   const preferences = useLiveQuery(() => db.preferences.get("preferences"), [db]);
   const todayNotes = useLiveQuery(() => notesRepository.list(toLocalDateKey(new Date())), [notesRepository], []);
   const [manualPeriod, setManualPeriod] = useState<"am" | "pm" | undefined>();
@@ -47,6 +50,8 @@ export function TodayScreen({ onOpenRoutines, onOpenProducts }: TodayScreenProps
   const availableForPeriod = routines.filter((routine) => routine.period === selection.period || routine.period === "anytime");
   const selectedRoutine = availableForPeriod.find((routine) => routine.id === selectedRoutineId);
   const activeRoutine: RoutineWithDetails | undefined = selectedRoutine ?? selection.primary ?? availableForPeriod[0];
+  const productNames = useMemo(() => new Map(products.map((product) => [product.id, product.name])), [products]);
+  const warnings = activeRoutine ? findIncompatibilityWarnings(activeRoutine.steps, incompatibilities, productNames) : [];
 
   useEffect(() => {
     let cancelled = false;
@@ -110,6 +115,7 @@ export function TodayScreen({ onOpenRoutines, onOpenProducts }: TodayScreenProps
               <p>{session?.status === "complete" ? <><CheckCircle2 size={15} /> Routine complete</> : <>{session?.completedCount ?? 0} of {session?.totalCount ?? activeRoutine.steps.length} complete{session?.skippedCount ? ` · ${session.skippedCount} skipped` : ""}</>}</p>
             </div>
           </section>
+          {warnings.length ? <aside className="compatibility-warning"><AlertTriangle size={20} /><div><strong>Your personal reminder</strong>{warnings.map((warning) => <p key={warning.ruleId}>{warning.leftName} + {warning.rightName}{warning.note ? ` — ${warning.note}` : ""}</p>)}<small>This comes from a rule you created, not medical advice from Veil.</small></div></aside> : null}
           <ol className="today-steps">
             {(session?.steps ?? []).map((step, index) => {
               const resolved = step.state !== "pending";

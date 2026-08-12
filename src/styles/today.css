@@ -99,6 +99,43 @@
   list-style: none;
 }
 
+.compatibility-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--color-warning) 26%, transparent);
+  border-radius: var(--radius-lg);
+  background: var(--color-warning-soft);
+  color: var(--color-warning);
+}
+
+.compatibility-warning > svg {
+  flex: 0 0 auto;
+}
+
+.compatibility-warning strong,
+.compatibility-warning p,
+.compatibility-warning small {
+  display: block;
+}
+
+.compatibility-warning strong {
+  font-size: var(--font-size-sm);
+}
+
+.compatibility-warning p {
+  margin-top: var(--space-1);
+  color: var(--color-ink);
+  font-size: var(--font-size-xs);
+}
+
+.compatibility-warning small {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-2xs);
+}
+
 .today-step {
   display: grid;
   grid-template-columns: auto 1fr;
