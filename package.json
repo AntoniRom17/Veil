@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
+    "build:netlify": "vite build --config vite.netlify.config.ts",
     "start": "vinext start",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
@@ -24,6 +25,7 @@
     "dexie-react-hooks": "^4.4.0",
     "jszip": "^3.10.1",
     "lucide-react": "^1.31.0",
+    "nitro": "3.0.260610-beta",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
