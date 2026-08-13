@@ -16,8 +16,10 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:smoke": "node --test tests/rendered-html.test.mjs",
+    "test:netlify": "node --test tests/netlify-output.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern coverage",
-    "check": "npm run typecheck && npm run lint && npm run test && npm run build && npm run test:smoke"
+    "check": "npm run typecheck && npm run lint && npm run test && npm run build && npm run test:smoke && npm run build:netlify && npm run test:netlify",
+    "check:netlify": "npm run typecheck && npm run lint && npm run build:netlify && npm run test:netlify"
   },
   "dependencies": {
     "date-fns": "^4.4.0",

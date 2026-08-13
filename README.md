@@ -100,7 +100,9 @@ npm run test:watch    # interactive Vitest mode
 npm run test:coverage # coverage report
 npm run build         # production build
 npm run test:smoke    # rendered production metadata/PWA smoke test
-npm run check         # complete release gate in dependency order
+npm run build:netlify # Netlify-compatible Nitro build
+npm run test:netlify  # verify generated Netlify function and PWA assets
+npm run check         # complete Cloudflare/Sites and Netlify release gate
 npm start             # serve an existing production build
 ```
 
@@ -126,6 +128,25 @@ The application remains local-first while offline: products, routines, routine c
 4. Tap **Add**.
 
 Veil uses `viewport-fit=cover`, iOS standalone metadata, an Apple touch icon, safe-area insets for the notch/Dynamic Island and Home indicator, and input sizing that avoids unwanted form zoom.
+
+## Deploying to Netlify
+
+Veil keeps its native Cloudflare/Sites build and provides an independent Netlify target through Nitro. Connect this repository to Netlify and deploy from `main`. The committed `netlify.toml` is authoritative and configures:
+
+- build command: `npm run build:netlify`;
+- publish directory: `dist`;
+- Node.js 22.13;
+- a Nitro-generated Netlify function that handles `/` and other server-rendered routes while allowing generated static assets to be served directly.
+
+No Netlify environment variables are required. If the existing Netlify project previously had `npm run build`, `vinext build`, `public`, or another publish directory configured in the dashboard, trigger a fresh deploy after pulling this commit. File-based `netlify.toml` settings override the conflicting dashboard build and publish settings.
+
+To validate the exact Netlify artifact locally:
+
+```bash
+npm run check:netlify
+```
+
+The output is split between `dist/` for public assets and `.netlify/functions-internal/` for the server function. Both folders are generated and intentionally ignored by Git; Netlify creates them during each deploy.
 
 ## Backup and restore
 
